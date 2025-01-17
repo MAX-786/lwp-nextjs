@@ -28,9 +28,9 @@ Learn With Project - Nextjs, A react based JS framework which makes your life ea
 - [x] **User Story 1.2: Configure ESLint and Prettier**: As a developer, I want to configure ESLint and Prettier so that my code follows consistent style guidelines.
 
 ### Epic 2: Home Page with Daily Quote
-- [ ] **User Story 2.1: Create Home Page Component**: As a user, I want to see a home page when I visit the site so that I know I am on the correct website.
-- [ ] **User Story 2.2: Fetch Daily Quote from API**: As a user, I want to see a new quote on the home page every day so that I can get daily inspiration.
-- [ ] **User Story 2.3: Display Daily Quote**: As a user, I want to see the fetched quote displayed on the home page so that I can read it.
+- [x] **User Story 2.1: Create Home Page Component**: As a user, I want to see a home page when I visit the site so that I know I am on the correct website.
+- [x] **User Story 2.2: Fetch Daily Quote from API**: As a user, I want to see a new quote on the home page every day so that I can get daily inspiration.
+- [x] **User Story 2.3: Display Daily Quote**: As a user, I want to see the fetched quote displayed on the home page so that I can read it.
 
 ### Epic 3: User Authentication
 - [ ] **User Story 3.1: Create Login Page**: As a user, I want to see a login page where I can enter my credentials so that I can access my account.

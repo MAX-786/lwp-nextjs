@@ -12,9 +12,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <body>
         <header>
           <nav>
-            <Link href="/">Home</Link>
-            <Link href="/login">Login</Link>
-            <Link href="/todos">Todos</Link>
+            <li>
+              <Link href="/">Home</Link> 
+            </li>
+            <li>
+              <Link href="/login">Login</Link>
+            </li>
+            <li>
+              <Link href="/todos">Todos</Link>
+            </li>
           </nav>
         </header>
         <main>{children}</main>
