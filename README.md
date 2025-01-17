@@ -5,7 +5,7 @@ Learn With Project - Nextjs, A react based JS framework which makes your life ea
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your-username/lwp-nextjs.git
+    git clone https://github.com/MAX-786/lwp-nextjs.git
     cd lwp-nextjs
     ```
 
