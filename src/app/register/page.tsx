@@ -2,20 +2,20 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
-const LoginPage: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useAuth();
+  const { register } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    login(email, password);
+    register(email, password);
   };
 
   return (
     <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <h1>Register</h1>
+      <form onSubmit={handleRegister}>
         <div>
           <label htmlFor="email">Email:</label>
           <input
@@ -36,10 +36,10 @@ const LoginPage: React.FC = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
