@@ -1,5 +1,5 @@
+import Header from "@/components/Header";
 import { AuthProvider } from "@/context/AuthContext";
-import Link from "next/link";
 import React from "react";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -14,22 +14,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </head>
       <body>
         <AuthProvider>
-          <header>
-            <nav>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/login">Login</Link>
-              </li>
-              <li>
-                <Link href="/todos">Todos</Link>
-              </li>
-              <li>
-                <Link href="/register">Register</Link>
-              </li>
-            </nav>
-          </header>
+          <Header />
           <main>{children}</main>
         </AuthProvider>
       </body>
