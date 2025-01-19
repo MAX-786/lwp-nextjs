@@ -32,6 +32,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({ message: 'Internal server error', error: error });
       }
       break;
+
+    case 'GET':
+      try {
+        const todo = await Todo.findById(id);
+        if (!todo) {
+          return res.status(404).json({ message: 'Todo not found' });
+        }
+        res.status(200).json(todo);
+      } catch (error) {
+        res.status(500).json({ message: 'Internal server error', error: error });
+      }
+      break;
     default:
       res.setHeader('Allow', ['PATCH', 'DELETE']);
       res.status(405).end(`Method ${req.method} Not Allowed`);
