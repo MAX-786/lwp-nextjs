@@ -2,17 +2,17 @@
 import React from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation"; // Use the navigation router from "next/navigation".
+import { useRouter } from "next/navigation"; 
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
   const isLoggedIn = user !== null;
 
-  // Ensure useRouter is accessed only in client-side rendering
+  
   let currentPath = "/";
   if (typeof window !== "undefined") {
     const router = useRouter();
-    currentPath = router.pathname; // Get the current route
+    currentPath  = router.pathname 
   }
 
   return (
@@ -42,7 +42,7 @@ const Header: React.FC = () => {
         </ul>
       </nav>
 
-      {/* Add CSS for styling */}
+      {}
       <style jsx>{`
         header {
           padding: 1rem;
