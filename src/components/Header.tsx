@@ -24,6 +24,9 @@ const Header: React.FC<object> = () => {
             <li>
               <Link href="/register">Register</Link>
             </li>
+            <li>
+              <Link href="/chats">Chats</Link>
+            </li>
           </>
         )}
         <li>
