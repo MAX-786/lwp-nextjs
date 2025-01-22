@@ -1,9 +1,9 @@
 "use client";
 
-// app/todos/page.tsx
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import axios from "axios";
 
 interface Todo {
@@ -84,12 +84,17 @@ const TodosPage: React.FC = () => {
               checked={todo.completed}
               onChange={() => handleToggleComplete(todo._id)}
             />
-            <span
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}>
-              {todo.text}
-            </span>
+            <Link href={`/todos/${todo._id}`}>
+              <span
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                  cursor: "pointer",
+                  color: "blue",
+                }}
+                title="View Details">
+                {todo.text}
+              </span>
+            </Link>
             <button onClick={() => handleDeleteTodo(todo._id)}>Delete</button>
           </li>
         ))}
