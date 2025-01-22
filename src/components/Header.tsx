@@ -2,70 +2,37 @@
 import React from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation"; 
 
-const Header: React.FC = () => {
+const Header: React.FC<object> = () => {
   const { user, logout } = useAuth();
   const isLoggedIn = user !== null;
-
-  
-  let currentPath = "/";
-  if (typeof window !== "undefined") {
-    const router = useRouter();
-    currentPath  = router.pathname 
-  }
-
   return (
     <header>
       <nav>
-        <ul>
-          <li className={currentPath === "/" ? "active" : ""}>
-            <Link href="/">Home</Link>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        {isLoggedIn ? (
+          <li>
+            <button onClick={logout}>Logout</button>
           </li>
-          {isLoggedIn ? (
+        ) : (
+          <>
             <li>
-              <button onClick={logout}>Logout</button>
+              <Link href="/login">Login</Link>
             </li>
-          ) : (
-            <>
-              <li className={currentPath === "/login" ? "active" : ""}>
-                <Link href="/login">Login</Link>
-              </li>
-              <li className={currentPath === "/register" ? "active" : ""}>
-                <Link href="/register">Register</Link>
-              </li>
-            </>
-          )}
-          <li className={currentPath === "/todos" ? "active" : ""}>
-            <Link href="/todos">Todos</Link>
-          </li>
-        </ul>
+            <li>
+              <Link href="/register">Register</Link>
+            </li>
+            <li>
+              <Link href="/chats">Chats</Link>
+            </li>
+          </>
+        )}
+        <li>
+          <Link href="/todos">Todos</Link>
+        </li>
       </nav>
-
-      {}
-      <style jsx>{`
-        header {
-          padding: 1rem;
-          background: #f5f5f5;
-        }
-        nav ul {
-          display: flex;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        nav li {
-          margin-right: 15px;
-        }
-        nav a {
-          text-decoration: none;
-          color: black;
-        }
-        .active a {
-          font-weight: bold;
-          color: blue;
-        }
-      `}</style>
     </header>
   );
 };
