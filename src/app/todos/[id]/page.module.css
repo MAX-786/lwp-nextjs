@@ -1,0 +1,78 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .header {
+    font-size: 2.5rem;
+    color: #1a365d;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .detailItem {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+  }
+  
+  .detailLabel {
+    font-weight: 500;
+    color: #4a5568;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detailValue {
+    font-weight: 400;
+    color: #1a202c;
+  }
+  
+  .status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #e2e8f0;
+  }
+  
+  .statusCompleted {
+    background-color: #c6f6d5;
+    color: #22543d;
+  }
+  
+  .backButton {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .backButton:hover {
+    background-color: #3182ce;
+    transform: translateY(-1px);
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #718096;
+    padding: 2rem;
+  }

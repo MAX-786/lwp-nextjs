@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component matches snapshot when logged in 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <nav
+      class="nav"
+    >
+      <ul
+        class="navList"
+      >
+        <li
+          class="navItem"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <a
+            href="/todos"
+          >
+            Todos
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <button
+            class="logoutButton"
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`Header Component matches snapshot when logged out 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <nav
+      class="nav"
+    >
+      <ul
+        class="navList"
+      >
+        <li
+          class="navItem"
+        >
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <a
+            href="/todos"
+          >
+            Todos
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <button
+            class="logoutButton"
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

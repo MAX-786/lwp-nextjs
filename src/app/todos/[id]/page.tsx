@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
+import styles from "./TodoDetails.module.css";
 
 interface Todo {
   _id: string;
@@ -34,19 +35,33 @@ const TodoDetailsPage: React.FC = () => {
   };
 
   if (!todo) {
-    return <div>Loading...</div>;
+    return <div className={styles.loading}>Loading...</div>;
   }
 
   return (
-    <div>
-      <h1>Todo Details</h1>
-      <p>
-        <strong>Text:</strong> {todo.text}
-      </p>
-      <p>
-        <strong>Completed:</strong> {todo.completed ? "Yes" : "No"}
-      </p>
-      <button onClick={() => router.push("/todos")}>Back to Todo List</button>
+    <div className={styles.container}>
+      <h1 className={styles.header}>Todo Details</h1>
+      
+      <div className={styles.card}>
+        <div className={styles.detailItem}>
+          <span className={styles.detailLabel}>Task</span>
+          <p className={styles.detailValue}>{todo.text}</p>
+        </div>
+
+        <div className={styles.detailItem}>
+          <span className={styles.detailLabel}>Status</span>
+          <span className={`${styles.status} ${todo.completed ? styles.statusCompleted : ''}`}>
+            {todo.completed ? "Completed" : "Pending"}
+          </span>
+        </div>
+      </div>
+
+      <button 
+        className={styles.backButton}
+        onClick={() => router.push("/todos")}
+      >
+        Back to Todo List
+      </button>
     </div>
   );
 };
