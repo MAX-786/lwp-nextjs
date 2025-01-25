@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /** Description: This file is the entry point of the application.
  * It creates a server using the http module and listens on port 3000.
  * It also creates a socket.io server and listens for connections on it.
  * When a user connects, it logs a message to the console and listens for messages from the user.
  * When a message is received, it emits the message to all connected users.
  * When a user disconnects, it logs a message to the console. **/
-import { createServer } from "http";
-import { Server } from "socket.io";
-import next from "next";
+
+const createServer = require("http").createServer;
+const { Server } = require("socket.io");
+const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -23,7 +25,7 @@ app.prepare().then(() => {
     console.log("User connected:", socket.id);
 
     socket.on("user-message", (message) => {
-      io.emit("message", message);
+      io.emit("message", {text: message.text, id: socket.id});
     });
 
     socket.on("disconnect", () => {

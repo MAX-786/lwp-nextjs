@@ -1,80 +1,79 @@
 "use client";
 import { useState, useEffect } from "react";
-import {io, Socket} from "socket.io-client";
+import { io, Socket } from "socket.io-client";
+import styles from "./page.module.css";
 
 let socket: Socket;
 
+type Message = {
+  text: string;
+  id: string;
+};
+
 const ChatPage = () => {
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<string[]>([]);
+  const [message, setMessage] = useState<Message>({ text: "", id: "" });
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    socket = io(); 
-    socket.on("message", (newMessage) => {
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    socket = io();
+    
+    socket.on("message", (data) => {
+      setMessages((prevMessages) => [...prevMessages, data]);
     });
-  
+    
     return () => {
-      socket.disconnect(); 
+      socket.disconnect();
     };
   }, []);
   
-
   const sendMessage = () => {
-    if (message.trim() !== "") {
+    setUserId(socket.id || null);
+    if (message.text.trim() !== "") {
+      setMessage({ text: message.text, id: socket.id ||  "unknown-user" });
       socket.emit("user-message", message);
-      setMessage(""); 
+      setMessage({text: "", id: ""});
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Chatting</h1>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>Live Chat</h1>
+      </header>
 
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Enter Message"
-        style={{
-          padding: "10px",
-          marginRight: "10px",
-          width: "300px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-        }}
-      />
-      <button
-        onClick={sendMessage}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Send
-      </button>
+      <div className={styles.chatContainer}>
+        <div className={styles.messages}>
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`${styles.message} ${userId === msg.id ? styles.own: null}` } // Remove ${styles.own} if differentiating users
+            >
+              {msg.text}
+            </div>
+          ))}
+        </div>
 
-      <div
-        id="messages"
-        style={{
-          marginTop: "20px",
-          padding: "10px",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-          maxHeight: "300px",
-          overflowY: "auto",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
-        {messages.map((msg, index) => (
-          <p key={index} style={{ margin: "5px 0" }}>
-            {msg}
-          </p>
-        ))}
+        <div className={styles.inputContainer}>
+          <input
+            type="text"
+            value={message.text}
+            onChange={(e) => setMessage({ text: e.target.value, id: "" })}
+            onKeyUp={handleKeyPress}
+            className={styles.input}
+            placeholder="Type your message..."
+          />
+          <button onClick={sendMessage} className={styles.sendButton}>
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
