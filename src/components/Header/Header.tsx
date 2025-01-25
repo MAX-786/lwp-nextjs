@@ -22,6 +22,11 @@ const Header: React.FC<object> = () => {
               Todos
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="/chats" className={styles.navLink}>
+              Chats
+            </Link>
+          </li>
           {isLoggedIn ? (
             <>
               <li className={styles.navItem}>
@@ -32,11 +37,6 @@ const Header: React.FC<object> = () => {
             </>
           ) : (
             <>
-              <li className={styles.navItem}>
-                <Link href="/chats" className={styles.navLink}>
-                  Chats
-                </Link>
-              </li>
               <li className={styles.navItem}>
                 <Link href="/login" className={styles.navLink}>
                   Login
