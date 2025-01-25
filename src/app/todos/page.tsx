@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
+import styles from "./page.module.css";
 
 interface Todo {
   _id: string;
@@ -65,37 +66,39 @@ const TodosPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Your Todo List</h1>
-      <form onSubmit={handleAddTodo}>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Your Todo List</h1>
+      <form onSubmit={handleAddTodo} className={styles.form}>
         <input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
+          className={styles.input}
+          placeholder="Add a new todo..."
           required
         />
-        <button type="submit">Add Todo</button>
+        <button type="submit" className={styles.addButton}>
+          Add Todo
+        </button>
       </form>
-      <ul>
+      <ul className={styles.todoList}>
         {todos.map((todo) => (
-          <li key={todo._id}>
+          <li key={todo._id} className={styles.todoItem}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => handleToggleComplete(todo._id)}
+              className={styles.checkbox}
             />
-            <Link href={`/todos/${todo._id}`}>
-              <span
-                style={{
-                  textDecoration: todo.completed ? "line-through" : "none",
-                  cursor: "pointer",
-                  color: "blue",
-                }}
-                title="View Details">
-                {todo.text}
-              </span>
+            <Link href={`/todos/${todo._id}`} className={todo.completed ? styles.todoTextCompleted : styles.todoText}>
+              {todo.text}
             </Link>
-            <button onClick={() => handleDeleteTodo(todo._id)}>Delete</button>
+            <button
+              onClick={() => handleDeleteTodo(todo._id)}
+              className={styles.deleteButton}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
