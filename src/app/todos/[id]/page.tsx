@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
-import styles from "./TodoDetails.module.css";
+import styles from "./page.module.css";
 
 interface Todo {
   _id: string;
