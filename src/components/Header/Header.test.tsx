@@ -102,7 +102,7 @@ describe("Header Component", () => {
       ).not.toBeInTheDocument();
       expect(
         screen.queryByRole("link", { name: "Chats" })
-      ).not.toBeInTheDocument();
+      ).toBeInTheDocument();
     });
 
     it("triggers logout when clicking logout button", () => {

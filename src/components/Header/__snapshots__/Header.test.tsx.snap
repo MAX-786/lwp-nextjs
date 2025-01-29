@@ -32,6 +32,15 @@ exports[`Header Component matches snapshot when logged in 1`] = `
         <li
           class="navItem"
         >
+          <a
+            href="/chats"
+          >
+            Chats
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
           <button
             class="logoutButton"
           >
@@ -71,6 +80,15 @@ exports[`Header Component matches snapshot when logged out 1`] = `
             href="/todos"
           >
             Todos
+          </a>
+        </li>
+        <li
+          class="navItem"
+        >
+          <a
+            href="/chats"
+          >
+            Chats
           </a>
         </li>
         <li
