@@ -1,32 +1,18 @@
-"use client"
-import React, { useEffect, useState } from "react";
-import { fetchQuote } from "../utils/fetchQuote";
+import Quote from "@/components/Quote/Quote";
+import React from "react";
 
-const HomePage: React.FC = async() => {
+const HomePage: React.FC = () => {
   //server side rendering
-  const quote = await fetchQuote();
 
   return (
     <div>
       <h1>Welcome to the Todo List App</h1>
-      <p>Get inspired with a new quote every day!</p>
-      {quote ? (
-        <blockquote>
-          <p>&quot;{quote.quote}&quot;</p>
-          <footer>- {quote.author}</footer>
-        </blockquote>
-      ) : (
-        <div>
-          <p>Loading quote...</p>
-        </div>
-      )}
+      <Quote />
     </div>
   );
 };
 
 export default HomePage;
-
-
 
 /*// Same component with client side rendering
 

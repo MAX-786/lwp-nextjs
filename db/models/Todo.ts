@@ -7,7 +7,7 @@ export interface ITodo extends Document {
 
 const TodoSchema: Schema<ITodo> = new Schema({
   text: { type: String, required: true },
-  completed: { type: Boolean, required: true, default: false },
+  completed: { type: Boolean, required: false, default: false },
 });
 
 const Todo: Model<ITodo> = mongoose.models.Todo || mongoose.model<ITodo>('Todo', TodoSchema);
